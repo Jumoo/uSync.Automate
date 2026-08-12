@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
+
+		<ContentTargetFolders>content</ContentTargetFolders>
+
+		<Product>uSync.Automate</Product>
+		<PackageId>uSync.Automate</PackageId>
+
+		<Title>uSync Automate</Title>
+		<Description>uSync for Umbraco Automate settings</Description>
+		<PackageTags>umbraco usync automate umbraco-marketplace</PackageTags>
+
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+
+		<PackageReference Include="Umbraco.Cms.Web.Website" />
+		<PackageReference Include="Umbraco.Cms.Api.Management" />
+
+		<PackageReference Include="Umbraco.Automate">
+			<ExcludeAssets>buildTransitive;build</ExcludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="uSync.BackOffice" />
+	</ItemGroup>
+
+	<!-- Client build; lifted from uSync.Forms.Complete.csproj so a clean clone always -->
+	<!-- produces a bundle at pack time instead of relying on a committed wwwroot. -->
+	<ItemGroup>
+		<ClientAssetsInputs Include="automate-client\**" Exclude="$(DefaultItemExcludes)" />
+		<Content Remove="automate-client\**" />
+		<None Include="automate-client\public\umbraco-package.json" Pack="false" Condition="Exists('automate-client\public\umbraco-package.json')" />
+	</ItemGroup>
+
+	<Target Name="RestoreClient" Inputs="automate-client\package.json;automate-client\package-lock.json"
+			Outputs="automate-client\node_modules\.package-lock.json">
+		<Message Importance="high" Text="Restoring uSync.Automate client NPM packages..." />
+		<Exec Command="npm i" WorkingDirectory="automate-client" />
+	</Target>
+
+	<Target Name="BuildClient" BeforeTargets="AssignTargetPaths" DependsOnTargets="RestoreClient"
+			Inputs="@(ClientAssetsInputs)" Outputs="$(IntermediateOutputPath)client.complete.txt">
+		<Message Importance="high" Text="Executing uSync.Automate client NPM build script..." />
+		<Exec Command="npm run build" WorkingDirectory="automate-client" />
+		<ItemGroup>
+			<_ClientAssetsBuildOutput Include="wwwroot\App_Plugins\**" />
+		</ItemGroup>
+		<WriteLinesToFile File="$(IntermediateOutputPath)client.complete.txt" Lines="@(_ClientAssetsBuildOutput)" Overwrite="true" />
+	</Target>
+
+</Project>

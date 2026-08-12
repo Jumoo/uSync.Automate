@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="dist/build-package.ps1" />
+    <File Path="readme.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="uSync.Automate/uSync.Automate.csproj" />
+  <Project Path="uSync.Automate.Actions/uSync.Automate.Actions.csproj" />
+  <Project Path="uSync.Automate.Tests/uSync.Automate.Tests.csproj" />
+  <Project Path="uSync.Automate.Site/uSync.Automate.Site.csproj" />
+</Solution>
