@@ -122,3 +122,4 @@ $RECYCLE.BIN/
 
 # uSync export folders written by the test site during manual verification
 **/uSync/**/
+uSync.Automate.Site/auto-sync/
