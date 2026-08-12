@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<!-- Class-level remarks document intent; per-property doc comments on simple output/settings DTOs would be pure noise. -->
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+
+		<PackageId>uSync.Automate.Actions</PackageId>
+		<Product>uSync.Automate.Actions</Product>
+		<Title>uSync for Umbraco Automate - Actions and Triggers</Title>
+		<Description>Run uSync imports, exports and reports from Umbraco Automate workflows, and trigger workflows from uSync events.</Description>
+		<PackageTags>umbraco usync automate automation workflow umbraco-marketplace</PackageTags>
+
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+
+		<PackageReference Include="uSync.BackOffice" />
+		<PackageReference Include="Umbraco.Automate.Core" />
+	</ItemGroup>
+</Project>
