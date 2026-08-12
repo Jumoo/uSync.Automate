@@ -1,4 +1,5 @@
 using uSync.Automate.Actions.Actions.Models;
+using uSync.Automate.Actions.Triggers.Bulk;
 using uSync.BackOffice;
 
 namespace uSync.Automate.Actions.Triggers.Mapping;
@@ -11,6 +12,14 @@ namespace uSync.Automate.Actions.Triggers.Mapping;
 /// </summary>
 public static class uSyncActionMapper
 {
+    /// <summary>
+    /// Cap applied to a trigger's <c>Changes</c> list. Triggers build their output once in
+    /// <c>MapEvent</c>, shared across every subscribing automation - <c>MapEvent</c> has no
+    /// access to a subscriber's own settings, so this can't be made per-automation the way
+    /// <c>uSyncRunRequest.MaxChangeDetails</c> is for actions.
+    /// </summary>
+    public const int DefaultTriggerChangeCap = 200;
+
     public static uSyncActionOutput ToActionOutput(uSyncAction action)
         => new()
         {
@@ -54,6 +63,28 @@ public static class uSyncActionMapper
             Operation = operation,
             Success = success,
             ErrorMessage = errorMessage,
+            ItemCount = actionList.Count,
+            ChangeCount = actionList.CountChanges(),
+            ErrorCount = actionList.CountErrors(),
+            HasChanges = actionList.CountChanges() > 0,
+            HasErrors = actionList.ContainsErrors(),
+            HandlerAliases = [.. actionList.Select(a => a.HandlerAlias ?? string.Empty).Distinct()],
+            Handlers = ToHandlerSummaries(actionList),
+            Changes = changes,
+            ChangesTruncated = actionList.Count > changes.Length,
+            CompletedUtc = DateTime.UtcNow,
+        };
+    }
+
+    public static uSyncBulkTriggerOutput ToBulkTriggerOutput(string operation, string? group, IReadOnlyCollection<uSyncAction> actions, int maxChangeDetails)
+    {
+        var actionList = actions.ToList();
+        var changes = actionList.Take(Math.Max(0, maxChangeDetails)).Select(ToActionOutput).ToArray();
+
+        return new uSyncBulkTriggerOutput
+        {
+            Operation = operation,
+            Group = group,
             ItemCount = actionList.Count,
             ChangeCount = actionList.CountChanges(),
             ErrorCount = actionList.CountErrors(),

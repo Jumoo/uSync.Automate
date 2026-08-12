@@ -37,6 +37,7 @@ public static class BuilderuSyncAutomateActionsExtensions
         // local export instead of creating a second, independent lock.
         builder.Services.TryAddSingleton<IuSyncOperationGate, uSyncOperationGate>();
         builder.Services.AddSingleton<uSyncRunner>();
+        builder.Services.AddSingleton<IuSyncItemTriggerBudget, uSyncItemTriggerBudget>();
 
         builder.Services.AddOptions<uSyncAutomateActionsOptions>()
             .Bind(builder.Config.GetSection(uSyncAutomateActionsOptions.Section));
