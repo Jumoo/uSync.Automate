@@ -30,7 +30,7 @@ namespace uSync.Automate.Handlers;
     "Automations",
     "Automate-Automations",
     uSyncAutomatePriorities.Automations,
-    Icon = "icon-fa-robot",
+    Icon = uSyncAutomate.GroupIcon,
     IsTwoPass = true,
     EntityType = uSyncAutomate.AutomationEntityType)]
 public class AutomationHandler : SyncHandlerRoot<Automation, Automation>, ISyncHandler,

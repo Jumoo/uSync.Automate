@@ -24,7 +24,11 @@ public class uSyncAutomate : ISyncAddOn
     public int SortOrder => 110;
 
     public const string GroupName = "Automate";
-    public const string GroupIcon = "icon-fa-robot";
+
+    // "icon-fa-robot" doesn't exist in v17's icon registry (lucide + legacy Umbraco + simpleIcons -
+    // see icon-dictionary.json shipped with @umbraco-cms/backoffice) and rendered blank. icon-flash
+    // (a lightning bolt) mirrors Automate's own client, which uses it for triggers.
+    public const string GroupIcon = "icon-flash";
 
     public const string WorkspaceEntityType = "automate-workspace";
     public const string GroupEntityType = "automate-group";
