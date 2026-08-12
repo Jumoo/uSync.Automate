@@ -24,4 +24,8 @@
 		<PackageReference Include="uSync.BackOffice" />
 		<PackageReference Include="Umbraco.Automate.Core" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="uSync.Automate.Tests" />
+	</ItemGroup>
 </Project>
