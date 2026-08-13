@@ -22,6 +22,12 @@
 		<PackageVersion Include="uSync.BackOffice" Version="17.3.5" />
 	</ItemGroup>
 
+	<!-- uSync.Complete (for uSync.Automate.Actions.Complete) -->
+	<ItemGroup>
+		<PackageVersion Include="uSync.Expansions.Core" Version="17.3.11" />
+		<PackageVersion Include="uSync.Publisher" Version="17.3.11" />
+	</ItemGroup>
+
 	<!-- Umbraco.Automate -->
 	<ItemGroup>
 		<PackageVersion Include="Umbraco.Automate" Version="17.2.0" />

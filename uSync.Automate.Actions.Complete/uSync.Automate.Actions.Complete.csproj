@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<!-- Class-level remarks document intent; per-property doc comments on simple output/settings DTOs would be pure noise. -->
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+
+		<PackageId>uSync.Automate.Actions.Complete</PackageId>
+		<Product>uSync.Automate.Actions.Complete</Product>
+		<Title>uSync.Automate.Actions for uSync.Complete</Title>
+		<Description>Run uSync.Complete publisher pushes/pulls and create restore points from Umbraco Automate workflows, and trigger workflows when a publish is received.</Description>
+		<PackageTags>umbraco usync usync-complete automate automation workflow umbraco-marketplace</PackageTags>
+
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+
+		<PackageReference Include="Umbraco.Automate.Core" />
+		<PackageReference Include="uSync.Expansions.Core" />
+		<PackageReference Include="uSync.Publisher" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\uSync.Automate.Actions\uSync.Automate.Actions.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="uSync.Automate.Tests.Complete" />
+	</ItemGroup>
+</Project>

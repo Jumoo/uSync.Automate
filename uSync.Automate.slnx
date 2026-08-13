@@ -7,6 +7,8 @@
   </Folder>
   <Project Path="uSync.Automate/uSync.Automate.csproj" />
   <Project Path="uSync.Automate.Actions/uSync.Automate.Actions.csproj" />
+  <Project Path="uSync.Automate.Actions.Complete/uSync.Automate.Actions.Complete.csproj" />
   <Project Path="uSync.Automate.Tests/uSync.Automate.Tests.csproj" />
+  <Project Path="uSync.Automate.Tests.Complete/uSync.Automate.Tests.Complete.csproj" />
   <Project Path="uSync.Automate.Site/uSync.Automate.Site.csproj" />
 </Solution>

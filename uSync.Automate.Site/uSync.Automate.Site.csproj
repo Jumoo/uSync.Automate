@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\uSync.Automate.Actions\uSync.Automate.Actions.csproj" />
+    <ProjectReference Include="..\uSync.Automate.Actions.Complete\uSync.Automate.Actions.Complete.csproj" />
     <ProjectReference Include="..\uSync.Automate\uSync.Automate.csproj" />
   </ItemGroup>
 

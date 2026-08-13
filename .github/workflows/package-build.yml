@@ -46,6 +46,7 @@ jobs:
     env:
       solution_name: ./uSync.Automate.slnx
       test_project: ./uSync.Automate.Tests/uSync.Automate.Tests.csproj
+      test_project_complete: ./uSync.Automate.Tests.Complete/uSync.Automate.Tests.Complete.csproj
 
     steps:
       - uses: actions/checkout@v4
@@ -63,6 +64,9 @@ jobs:
 
       - name: test
         run: dotnet test ${{ env.test_project }} -c ${{ env.config }}
+
+      - name: test (Complete)
+        run: dotnet test ${{ env.test_project_complete }} -c ${{ env.config }}
 
   package-up:
     runs-on: windows-latest
@@ -96,6 +100,9 @@ jobs:
 
       - name: package uSync.Automate.Actions
         run: dotnet pack ./uSync.Automate.Actions/uSync.Automate.Actions.csproj -c ${{ env.config }} --output ${{ env.out_folder }} /p:version=${{ needs.version.outputs.version_string }}
+
+      - name: package uSync.Automate.Actions.Complete
+        run: dotnet pack ./uSync.Automate.Actions.Complete/uSync.Automate.Actions.Complete.csproj -c ${{ env.config }} --output ${{ env.out_folder }} /p:version=${{ needs.version.outputs.version_string }}
 
       - name: Upload nuget file as build artifact
         uses: actions/upload-artifact@v4

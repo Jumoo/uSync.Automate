@@ -121,6 +121,36 @@ uSync itself, rather than worked around here. Ranked roughly by how much they cu
    passes the real group. `uSync.exportCompleted`'s `Group` filter in `uSync.Automate.Actions` is
    therefore unreliable depending on how the export was triggered - worth making consistent.
 
+## uSync.Complete / Jumoo.Processing.Core
+
+Discovered building `uSync.Automate.Actions.Complete` (publisher push/pull and restore point
+actions/triggers).
+
+1. **`PublisherStrategy` (pipeline/strategy alias constants) is `internal` to `uSync.Publisher`.**
+   A third-party integration driving `IPipelineService` directly - the only way to run a push/pull
+   headlessly, see `uSync.Complete.Hangfire`'s `ProcessingScheduler` - has no choice but to
+   re-declare `"PublisherPipeline"`/`"RealtimePushStrategy"`/`"RealtimePullStrategy"` as string
+   literals (`CompletePipelines.cs` in this package). Making the class `public` (it's already the
+   shape `uSyncRestorePoints` uses publicly for the same purpose) would remove the duplication and
+   the risk of it silently drifting out of sync.
+
+2. **`ProcessingCompletedNotification` (`Jumoo.Processing.Core`) carries only a `RequestId` -
+   no strategy or pipeline alias.** This makes it impossible to build a "restore point finished"
+   trigger without a fragile in-memory `RequestId` → strategy correlation map populated by
+   whichever code started the pipeline (and lost across an app pool recycle). We shipped a
+   `uSyncComplete.publishReceived` trigger against `uSyncPublisherCompletedNotification` (which
+   does carry enough context, via `PublisherActionRequest`) but had to leave restore-point
+   completion untriggerable for the same reason. Adding a `Strategy`/`PipelineAlias` property to
+   `ProcessingNotificationBase` would unblock a generic "any pipeline completed" trigger instead
+   of one per feature.
+
+3. **`SyncPublisherPipelineProcessor.UpdateOptions` silently overwrites the flags on every
+   `SyncItem`** it's given, deriving them from `PublisherProcessingOptions.PublisherOptions`
+   instead. Not a bug exactly, but undocumented behaviour that `uSync.Complete.Hangfire`'s
+   `PublisherScheduler` gets wrong (it sets flags on the `SyncItem` and they're discarded). A
+   doc-comment on `PublisherProcessingOptions.Items`/`PublisherOptions` noting which one wins
+   would have saved the archaeology.
+
 ## What we didn't ask for
 
 `Umbraco.Deploy.Automate` has an `InternalsVisibleTo` grant into `Umbraco.Automate.Core` that we
