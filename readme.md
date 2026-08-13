@@ -1,5 +1,9 @@
 # uSync.Automate
 
+[![uSync.Automate](https://img.shields.io/nuget/vpre/uSync.Automate?label=uSync.Automate)](https://www.nuget.org/packages/uSync.Automate)
+[![uSync.Automate.Actions](https://img.shields.io/nuget/vpre/uSync.Automate.Actions?label=uSync.Automate.Actions)](https://www.nuget.org/packages/uSync.Automate.Actions)
+[![uSync.Automate.Actions.Complete](https://img.shields.io/nuget/vpre/uSync.Automate.Actions.Complete?label=uSync.Automate.Actions.Complete)](https://www.nuget.org/packages/uSync.Automate.Actions.Complete)
+
 uSync support for [Umbraco.Automate](https://jumoo.co.uk/) — sync Automate workspaces, groups and
 automations between environments as XML files, and drive uSync from Automate workflows.
 
