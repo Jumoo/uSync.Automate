@@ -17,6 +17,7 @@ jobs:
     env:
       solution_name: ./uSync.Automate.slnx
       test_project: ./uSync.Automate.Tests/uSync.Automate.Tests.csproj
+      test_project_complete: ./uSync.Automate.Tests.Complete/uSync.Automate.Tests.Complete.csproj
 
     steps:
       - uses: actions/checkout@v4
@@ -34,3 +35,6 @@ jobs:
 
       - name: test
         run: dotnet test ${{ env.test_project }} -c ${{ env.config }}
+
+      - name: test (Complete)
+        run: dotnet test ${{ env.test_project_complete }} -c ${{ env.config }}
