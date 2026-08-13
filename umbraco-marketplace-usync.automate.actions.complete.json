@@ -1,0 +1,46 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+    "AuthorDetails": {
+        "Name": "Jumoo",
+        "Description": "Jumoo are a software development company based in the UK",
+        "Url": "https://jumoo.co.uk",
+        "ImageUrl": "https://jumoo.co.uk/img/ju_square.jpg"
+    },
+    "Category": "Developer Tools",
+    "PackageType": "Package",
+    "LicenseTypes": ["Free"],
+    "Tags": [
+        "automate",
+        "workflow",
+        "automation",
+        "sync",
+        "usync-complete",
+        "publisher"
+    ],
+    "PackagesByAuthor": [
+        "uSync",
+        "uSync.Complete",
+        "uSync.Automate",
+        "uSync.Automate.Actions",
+        "uSync.Hangfire",
+        "uSync.Complete.Hangfire",
+        "Jumoo.TranslationManager",
+        "Jumoo.TranslationManager.AI"
+    ],
+    "RelatedPackages": [
+        {
+            "PackageId": "uSync.Automate",
+            "Description": "Syncs Automate's own workspaces, groups and automations as uSync XML files.",
+            "GroupTitle": "uSync.Automate family"
+        },
+        {
+            "PackageId": "uSync.Automate.Actions",
+            "Description": "Run uSync import/export/report and fire workflows from uSync events."
+        }
+    ],
+
+    "Title": "uSync.Automate.Actions for uSync.Complete",
+    "Description": "Push or pull content/media and settings items, and create restore points, via uSync.Complete's publisher from Umbraco Automate workflows, and trigger workflows when a publish is received. Requires a licensed uSync.Complete.",
+    "DocumentationUrl": "https://github.com/Jumoo/uSync.Automate/tree/main/uSync.Automate.Actions.Complete#readme",
+    "IssueTrackerUrl": "https://github.com/Jumoo/uSync.Automate/issues"
+}

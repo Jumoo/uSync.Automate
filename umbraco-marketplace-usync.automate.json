@@ -1,0 +1,44 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+    "AuthorDetails": {
+        "Name": "Jumoo",
+        "Description": "Jumoo are a software development company based in the UK",
+        "Url": "https://jumoo.co.uk",
+        "ImageUrl": "https://jumoo.co.uk/img/ju_square.jpg"
+    },
+    "Category": "Developer Tools",
+    "PackageType": "Package",
+    "LicenseTypes": ["Free"],
+    "Tags": [
+        "automate",
+        "workflow",
+        "automation",
+        "sync"
+    ],
+    "PackagesByAuthor": [
+        "uSync",
+        "uSync.Complete",
+        "uSync.Automate.Actions",
+        "uSync.Automate.Actions.Complete",
+        "uSync.Hangfire",
+        "uSync.Complete.Hangfire",
+        "Jumoo.TranslationManager",
+        "Jumoo.TranslationManager.AI"
+    ],
+    "RelatedPackages": [
+        {
+            "PackageId": "uSync.Automate.Actions",
+            "Description": "Run uSync import/export/report and fire workflows from uSync events.",
+            "GroupTitle": "uSync.Automate family"
+        },
+        {
+            "PackageId": "uSync.Automate.Actions.Complete",
+            "Description": "Push/pull content, media and settings, and create restore points, via uSync.Complete's publisher."
+        }
+    ],
+
+    "Title": "uSync.Automate",
+    "Description": "uSync handlers and serializers for Umbraco.Automate's Workspace, WorkspaceGroup and Automation settings, so they export to disk and travel between servers the same way content types, data types and other uSync-managed settings do.",
+    "DocumentationUrl": "https://github.com/Jumoo/uSync.Automate#readme",
+    "IssueTrackerUrl": "https://github.com/Jumoo/uSync.Automate/issues"
+}

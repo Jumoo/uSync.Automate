@@ -1,0 +1,44 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+    "AuthorDetails": {
+        "Name": "Jumoo",
+        "Description": "Jumoo are a software development company based in the UK",
+        "Url": "https://jumoo.co.uk",
+        "ImageUrl": "https://jumoo.co.uk/img/ju_square.jpg"
+    },
+    "Category": "Developer Tools",
+    "PackageType": "Package",
+    "LicenseTypes": ["Free"],
+    "Tags": [
+        "automate",
+        "workflow",
+        "automation",
+        "sync"
+    ],
+    "PackagesByAuthor": [
+        "uSync",
+        "uSync.Complete",
+        "uSync.Automate",
+        "uSync.Automate.Actions.Complete",
+        "uSync.Hangfire",
+        "uSync.Complete.Hangfire",
+        "Jumoo.TranslationManager",
+        "Jumoo.TranslationManager.AI"
+    ],
+    "RelatedPackages": [
+        {
+            "PackageId": "uSync.Automate",
+            "Description": "Syncs Automate's own workspaces, groups and automations as uSync XML files.",
+            "GroupTitle": "uSync.Automate family"
+        },
+        {
+            "PackageId": "uSync.Automate.Actions.Complete",
+            "Description": "Push/pull content, media and settings, and create restore points, via uSync.Complete's publisher."
+        }
+    ],
+
+    "Title": "uSync.Automate.Actions",
+    "Description": "Umbraco.Automate actions and triggers that run uSync import/export/report operations from a workflow, and fire workflows from uSync events.",
+    "DocumentationUrl": "https://github.com/Jumoo/uSync.Automate/tree/main/uSync.Automate.Actions#readme",
+    "IssueTrackerUrl": "https://github.com/Jumoo/uSync.Automate/issues"
+}
