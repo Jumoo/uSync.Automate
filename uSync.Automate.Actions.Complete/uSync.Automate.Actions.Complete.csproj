@@ -10,7 +10,7 @@
 		<PackageId>uSync.Automate.Actions.Complete</PackageId>
 		<Product>uSync.Automate.Actions.Complete</Product>
 		<Title>uSync.Automate.Actions for uSync.Complete</Title>
-		<Description>Run uSync.Complete publisher pushes/pulls and create restore points from Umbraco Automate workflows, and trigger workflows when a publish is received.</Description>
+		<Description>Push or pull content/media and settings items, and create restore points, via uSync.Complete's publisher from Umbraco Automate workflows, and trigger workflows when a publish is received.</Description>
 		<PackageTags>umbraco usync usync-complete automate automation workflow umbraco-marketplace</PackageTags>
 
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
