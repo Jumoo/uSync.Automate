@@ -105,7 +105,7 @@ jobs:
         run: dotnet pack ./uSync.Automate.Actions.Complete/uSync.Automate.Actions.Complete.csproj -c ${{ env.config }} --output ${{ env.out_folder }} /p:version=${{ needs.version.outputs.version_string }}
 
       - name: Upload nuget file as build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: Nuget Build Output
           path: ${{ env.out_folder }}
