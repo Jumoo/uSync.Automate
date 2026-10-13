@@ -26,7 +26,10 @@ updates:
       interval: "weekly"
     # TypeScript stays on v5 until hey-api (our generated API client) supports TS 7.
     # hey-api majors change the generated client, so they move when we choose.
+    # @umbraco-cms/* sets the Umbraco floor, same as Umbraco.* on the nuget side, and resolves
+    # from the Umbraco myget feed, which dependabot cannot authenticate against.
     ignore:
+      - dependency-name: "@umbraco-cms/*"
       - dependency-name: "typescript"
         versions: [">=6"]
       - dependency-name: "@hey-api/*"
