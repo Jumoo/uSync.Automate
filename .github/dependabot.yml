@@ -24,6 +24,13 @@ updates:
     directory: "/uSync.Automate/automate-client"
     schedule:
       interval: "weekly"
+    # TypeScript stays on v5 until hey-api (our generated API client) supports TS 7.
+    # hey-api majors change the generated client, so they move when we choose.
+    ignore:
+      - dependency-name: "typescript"
+        versions: [">=6"]
+      - dependency-name: "@hey-api/*"
+        update-types: ["version-update:semver-major"]
     groups:
       npm-dependencies:
         patterns:
